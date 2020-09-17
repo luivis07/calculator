@@ -9,7 +9,7 @@ namespace Calculator.Main
             Console.WriteLine("Welcome!");
             Console.WriteLine("Enter a selection ('q' to quit):");
             Console.WriteLine("a) Addition");
-            Console.WriteLine("b) Substraction");
+            Console.WriteLine("b) Subtraction");
             Console.WriteLine("c) Multiplication");
             Console.WriteLine("d) Division");
             
