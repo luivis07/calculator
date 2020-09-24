@@ -6,45 +6,43 @@ namespace Calculator.Main
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome!");
-            Console.WriteLine("Enter a selection ('q' to quit):");
-            Console.WriteLine("a) Addition");
-            Console.WriteLine("b) Subtraction");
-            Console.WriteLine("c) Multiplication");
-            Console.WriteLine("d) Division");
-            
+            var addition = new Addition();
+            var subtraction = new Subtraction();
+            var multiplication = new Multiplication();
+            var division = new Division();
+            var userPrompt = new UserPrompt();
+
+            var menu = userPrompt.GetMenu();
+            Console.WriteLine(menu);
             var selection = Console.ReadLine();
             
-            Console.WriteLine("Enter first number");
+            Console.WriteLine(userPrompt.PromptFirstNumber());
             var num1 = Convert.ToInt32(Console.ReadLine());
             
-            Console.WriteLine("Enter second number");
+            Console.WriteLine(userPrompt.PromptSecondNumber());
             var num2 = Convert.ToInt32(Console.ReadLine());
 
             var result = 0;
-            var resultMessage = "The result is {0}";
+            string resultMessage;
             switch (selection)
             {
                 case "a":
                 result = num1 + num2;
-                resultMessage = string.Format(resultMessage, result);
                 break;
                 case "b":
                 result = num1 - num2;
-                resultMessage = string.Format(resultMessage, result);
                 break;
                 case "c":
                 result = num1 * num2;
-                resultMessage = string.Format(resultMessage, result);
                 break;
                 case "d":
                 result = num1 / num2;
-                resultMessage = string.Format(resultMessage, result);
                 break;
                 default:
                 resultMessage = "Goodbye";
                 break;
             }
+            resultMessage = userPrompt.DisplayResult(result);
             Console.WriteLine(resultMessage);
         }
     }
