@@ -27,16 +27,16 @@ namespace Calculator.Main
             switch (selection)
             {
                 case "a":
-                result = num1 + num2;
+                result = addition.Add(num1, num2);
                 break;
                 case "b":
-                result = num1 - num2;
+                result = subtraction.Subtract(num1, num2);
                 break;
                 case "c":
-                result = num1 * num2;
+                result = multiplication.Multiply(num1, num2);
                 break;
                 case "d":
-                result = num1 / num2;
+                result = division.Divide(num1, num2);
                 break;
                 default:
                 resultMessage = "Goodbye";
