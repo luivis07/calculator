@@ -1,6 +1,6 @@
 using System;
 
-public class UserPrompt
+public class UserPrompt : IUserPrompt
 {
     public string GetMenu()
     {

@@ -1,23 +1,26 @@
 using System;
+using System.Linq;
 
-public class Selector
+public class Selector : ISelector
 {
-    private readonly Addition addition = new Addition();
-    private readonly Subtraction subtraction = new Subtraction();
-    private readonly Multiplication multiplication = new Multiplication();
-    private readonly Division division = new Division();
+    private readonly IOperator[] operators;
+    public Selector(IOperator[] operators)
+    {
+        this.operators = operators;
+    }
+
     public IOperator GetOperator(string option)
     {
         switch (option)
         {
             case "a":
-                return addition;
+                return operators.FirstOrDefault(f => f is Addition);
             case "b":
-                return subtraction;
+                return operators.FirstOrDefault(f => f is Subtraction);
             case "c":
-                return multiplication;
+                return operators.FirstOrDefault(f => f is Multiplication);
             case "d":
-                return division;
+                return operators.FirstOrDefault(f => f is Division);
             default:
                 throw new NotImplementedException();
         }

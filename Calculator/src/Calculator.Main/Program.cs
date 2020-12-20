@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity;
 
 namespace Calculator.Main
 {
@@ -6,8 +7,10 @@ namespace Calculator.Main
     {
         static void Main(string[] args)
         {
-            var selector = new Selector();
-            var userPrompt = new UserPrompt();
+            var container = RegisterContainer();
+            
+            var selector = container.Resolve<ISelector>();
+            var userPrompt = container.Resolve<IUserPrompt>();
 
             var menu = userPrompt.GetMenu();
             Console.WriteLine(menu);
@@ -25,6 +28,14 @@ namespace Calculator.Main
             result = op.Calculate(num1, num2);
             resultMessage = userPrompt.DisplayResult(result);
             Console.WriteLine(resultMessage);
+        }
+
+        static IUnityContainer RegisterContainer()
+        {
+            var container = new UnityContainer();
+            container.RegisterSingleton<ISelector, Selector>();
+            container.RegisterSingleton<IUserPrompt, UserPrompt>();
+            return container;
         }
     }
 }
