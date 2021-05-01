@@ -35,6 +35,10 @@ namespace Calculator.Main
             var container = new UnityContainer();
             container.RegisterSingleton<ISelector, Selector>();
             container.RegisterSingleton<IUserPrompt, UserPrompt>();
+            container.RegisterSingleton<IOperator, Addition>();
+            container.RegisterSingleton<IOperator, Division>();
+            container.RegisterSingleton<IOperator, Multiplication>();
+            container.RegisterSingleton<IOperator, Subtraction>();
             return container;
         }
     }
