@@ -9,4 +9,9 @@ public class Subtraction : IOperator
     {
         return num1 - num2;
     }
+
+    public bool Matches(string operationToken)
+    {
+        return string.Equals(operationToken, "b");
+    }
 }
