@@ -1,15 +1,26 @@
 using System;
+using System.Text;
 
 public class UserPrompt : IUserPrompt
 {
+    private readonly IOperator[] _operators;
+
+    public UserPrompt(IOperator[] operators)
+    {
+        _operators = operators;
+    }
     public string GetMenu()
     {
-        return @"Welcome!" +
-                "Enter a selection ('q' to quit):" +
-                "a) Addition" +
-                "b) Subtraction" +
-                "c) Multiplication" +
-                "d) Division";
+        var sb = new StringBuilder();
+        sb.AppendLine("Welcome!");
+        sb.AppendLine("Enter a selection ('q' to quit):");
+        foreach(var op in _operators)
+        {
+
+            sb.AppendFormat("{0}) {1}",op.OperationToken, op.OperationName);
+            sb.AppendLine();
+        }
+        return sb.ToString();
     }
 
     public string PromptFirstNumber()

@@ -1,5 +1,9 @@
 public class Subtraction : IOperator
 {
+    public string OperationToken => "b";
+
+    public string OperationName => "Subtraction";
+
     public int Calculate(int num1, int num2)
     {
         return Subtract(num1, num2);
@@ -12,6 +16,6 @@ public class Subtraction : IOperator
 
     public bool Matches(string operationToken)
     {
-        return string.Equals(operationToken, "b");
+        return string.Equals(operationToken, OperationToken);
     }
 }
